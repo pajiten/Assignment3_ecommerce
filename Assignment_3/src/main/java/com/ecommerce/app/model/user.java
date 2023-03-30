@@ -10,8 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class user {
 	
 	@Column(name = "phone_number")
 	private int phone_number;
+	
 	
 	 @OneToMany(targetEntity = product_order.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	 @JoinColumn(name = "userid")
@@ -77,12 +79,14 @@ public class user {
 	public void setPhone_number(int phone_number) {
 		this.phone_number = phone_number;
 	}
+	
+
 	public Collection<? extends com.ecommerce.app.model.product_order> getorders() {
 		// TODO Auto-generated method stub
 
 		return product_order ;
 	}
-
-
+	
+	
 	
 }
